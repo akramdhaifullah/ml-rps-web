@@ -41,7 +41,7 @@ The images are loaded using ImageDataGenerator() from the *keras.preprocessing.i
 The modelling involves training the dataset with a pre-trained MobileNet model. MobileNet is a lightweight convolutional neural network architecture that is trained on the ImageNet dataset consisting of millions of labeled images accross thousands of categories.
 
 ### Model Training
-Model is trained on the dataset with RMSprop optimizer and *categorical_crossentropy* loss for 5 epochs.
+Model is trained on the dataset with RMSprop optimizer and *categorical_crossentropy* loss for 10 epochs.
 <div style="display: flex">
     <div style="margin-right: 10px">
         <img src="utils/model_eval_1.png" alt="eval_1" width="75%">
