@@ -51,7 +51,7 @@ The modelling involves training the dataset with a pre-trained MobileNet model. 
 
 ### Model Training
 Model is trained on the dataset with RMSprop optimizer and *categorical_crossentropy* loss for 10 epochs. Based on the training history graph, the model was able to highly recognize each images in the label without losing the validation accuracy.
-|   |  |
+|   Training and Validation accuracy | Training and Validation loss |
 | ------------- | ------------- |
 | ![](utils/model_eval_1.png)  | ![](utils/model_eval_2.png)  |
 
