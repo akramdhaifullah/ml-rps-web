@@ -18,11 +18,42 @@
 ## Dataset
 The dataset used in this project contains a total of 2520 images with an equal proportion of images per class: 840 images for rock, paper, and scissors, respectively. [The link to the dataset can be accessed here.](https://drive.google.com/file/d/1X9jFokn9AXMMVTmlBQ7XZpBsLKVFnp-d/view?usp=drive_link)
 
+<div>
+    <img src="utils/dataset_1.png" alt="dataset" width="75%">
+</div>
+
 ### Data Preprocessing
+The images are loaded using ImageDataGenerator() from the *keras.preprocessing.image* library. To prevent overfitting, the images are augmented with the paramaters below:
+- rotation_range=30
+- shear_range=0.2
+- zoom_range=0.025
+- horizontal_flip=True
+- vertical_flip=True
+- width_shift_range=0.05
+- height_shift_range=0.05
+- brightness_range=(1,1.1)
+
+<div>
+    <img src="utils/dataset_2.png" alt="augmented_dataset" width="75%">
+</div>
 
 ## Deep Learning Model
 The modelling involves training the dataset with a pre-trained MobileNet model. MobileNet is a lightweight convolutional neural network architecture that is trained on the ImageNet dataset consisting of millions of labeled images accross thousands of categories.
 
 ### Model Training
+Model is trained on the dataset with RMSprop optimizer and *categorical_crossentropy* loss for 5 epochs.
+<div style="display: flex">
+    <div style="margin-right: 10px">
+        <img src="utils/model_eval_1.png" alt="eval_1" width="100%">
+    </div>
+    <div>
+        <img src="utils/model_eval_2.png" alt="eval_2" width="100%">
+    </div>
+</div>
 
 ### Model Evaluation
+After the model has been trained, the test dataset is used to evaluate the model.
+<div>
+    <img src="utils/model_eval_3.png" alt="eval_3" width="50%">
+</div>
+Based on the classification report, the model excellently predicted the labels for each images on the test dataset, with 100% overall accuracy.
