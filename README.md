@@ -44,10 +44,10 @@ The modelling involves training the dataset with a pre-trained MobileNet model. 
 Model is trained on the dataset with RMSprop optimizer and *categorical_crossentropy* loss for 5 epochs.
 <div style="display: flex">
     <div style="margin-right: 10px">
-        <img src="utils/model_eval_1.png" alt="eval_1" width="100%">
+        <img src="utils/model_eval_1.png" alt="eval_1" width="75%">
     </div>
     <div>
-        <img src="utils/model_eval_2.png" alt="eval_2" width="100%">
+        <img src="utils/model_eval_2.png" alt="eval_2" width="75%">
     </div>
 </div>
 
