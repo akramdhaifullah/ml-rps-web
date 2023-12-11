@@ -1,0 +1,75 @@
+<!-- Table-section -->
+<body>
+    <section class="contact-section" id="result" style="background-color: #D8D9DA; display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <div class="container" style="background-color: #FFF6E0; padding: 20px; border-radius: 10px;">
+            <div class="title-box centred">
+                <div class="sec-title" style="color: #0c070a; text-align: center;">
+                    <h1>Rock, Paper, Scissors Prediction</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-12 col-sm-12 content-column">
+                    <div class="inner-content">
+                        <div class="contact-form-area">
+                            <p style="color: #0c070a; text-transform: capitalize; font-size: 18px; font-weight: bold; text-align: center;">Prediction: {{ labels[pred] }}</p>
+                            <p style="color: #61677A; font-size: 16px; text-align: center;">Accuracy: {{ (probs|max) }}%</p>
+                            <p style="color: #61677A; font-size: 16px; text-align: center;">Prediction Time: {{ (run_time) }} seconds</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12 sidebar-column">
+                    <div class="sidebar-content">
+                        <img src="{{ url_for('static', filename=img) }}" alt="Input Image" class="img-fluid result-image" style="margin: 20 auto; display: block;">
+                        <form action="/">
+                            <button class="login100-form-btn" type="submit" style="background-color: #0c070a;">
+                                Go Back
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<!-- final-section end -->
+
+<style>
+    .container {
+        width: 50%;
+    }
+
+    .progress-container {
+        width: 100%;
+        background-color: #ddd;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+
+    .progress-bar {
+        width: 0%;
+        height: 30px;
+        background-color: rgb(180, 195, 215);
+        color: #fff;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 5px;
+    }
+
+    .result-image {
+        height: 300px;
+        width: 300px;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+
+    .login100-form-btn {
+        font-size: 16px;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 20ch;
+    }
+    
+</style>

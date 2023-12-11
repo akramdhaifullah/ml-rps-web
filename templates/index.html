@@ -1,0 +1,130 @@
+<!-- form-section -->
+<body>
+    <section class="contact-section" style="padding-top: 50px; background-color: #D8D9DA; display: flex; justify-content: center; align-items: center; height: 100vh;" id="predict1">
+        <div class="container" style="background-color: #FFF6E0; padding: 20px; border-radius: 10px;">
+            <div class="title-box">
+                <div class="sec-title" style="color: #272829;">
+                    <h1>Rock, Paper, Scissors Prediction</h1>
+                </div>
+            </div>
+            <form class="login100-form validate-form" action="/predict" method="post" enctype="multipart/form-data">
+                <div class="image-preview-container">
+                    <img id="image-preview" alt="image preview" src="../static/initial.png" class="image-preview" />
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Image file is required" id="input" style="background-color: #ececec;">
+                    <label for="image-source" class="input-label">
+                        Choose an Image:
+                        <i class="fa fa-file" aria-hidden="true"></i>
+                    </label>
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        <div class="alert alert-danger" style="padding-bottom: 5px;">
+                            {% for message in messages %}
+                                <div style="color: red;">{{ message }}</div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    {% endwith %}
+                    <input class="input100" id="image-source" name="file" onchange="previewImage();" type="file" accept="image/jpeg,image/jpg,image/png">
+                    <span class="focus-input100" style="background-color: #272829;"></span>
+                </div>
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" type="submit" style="background-color: #0c070a;">
+                        Predict
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+
+<!-- form-section end -->
+
+<style>
+    .title-box {
+        margin-bottom: 10px;
+    }
+    .sec-title {
+        text-align: center;
+    }
+
+    .container {
+        width: 50%;
+    }
+
+    .image-preview-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .image-preview {
+        width: 400px;
+        border: 1px solid #272829;
+        border-radius: 5px;
+    }
+
+    .input-label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .wrap-input100 {
+        position: relative;
+        padding: 10px;
+    }
+
+    .input100 {
+        font-size: 16px;
+        padding: 10px;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .focus-input100::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #0c070a;
+        transition: 0.4s;
+    }
+
+    .container-login100-form-btn {
+        margin-top: 20px;
+    }
+
+    .login100-form-btn {
+        font-size: 16px;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+
+    }
+
+</style>
+
+
+<script>
+    // fungsi buat nampilin preview
+    function previewImage() {
+        var preview = document.getElementById('image-preview');
+        var fileInput = document.getElementById('image-source');
+        var file = fileInput.files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
