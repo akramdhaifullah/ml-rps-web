@@ -23,7 +23,12 @@ The dataset used in this project contains a total of 2520 images with an equal p
 </div>
 
 ### Data Preprocessing
-The images are loaded using ImageDataGenerator() from the *keras.preprocessing.image* library. To prevent overfitting, the images are augmented with the paramaters below:
+The dataset is first splitted using *splitfolders* library into 3 sets: training, validation, and testing with proportion of 80, 10, and 10 percent respectively.
+```python
+splitfolders.ratio("Dataset/Images/rps/", output="Dataset/Images/rps_split",
+    seed=1337, ratio=(.8, .1, .1), group_prefix=None, move=False)
+```
+Then, the images are loaded using ImageDataGenerator() from the *keras.preprocessing.image* library. To prevent overfitting, the images are augmented with the paramaters below:
 - rotation_range=30
 - shear_range=0.2
 - zoom_range=0.025
