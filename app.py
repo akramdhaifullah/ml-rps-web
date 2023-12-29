@@ -27,7 +27,7 @@ def index():
     return render_template('/index.html', )
 
 def predict_result(run_time, probs, img):
-    class_list = {'Paper': 0, 'Rock': 1, 'Scissors:' :2}
+    class_list = {'Paper': 0, 'Rock': 1, 'Scissors' :2}
     idx_pred = probs.index(max(probs))
     labels = list(class_list.keys())
     return render_template('/result.html', labels=labels,
