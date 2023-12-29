@@ -5,6 +5,7 @@ import cv2
 import numpy as np
 from PIL import Image
 from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.image import img_to_array
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 app = Flask(__name__)
@@ -57,18 +58,22 @@ def predict():
         return redirect('/')
 
     # The rest of your code for image processing and prediction
-    file.save(os.path.join('static', 'temp.jpg'))
-    img = cv2.cvtColor(np.array(Image.open('./static/temp.jpg')), cv2.COLOR_BGR2RGB)
-    img = cv2.resize(img, (128, 128))
-    img = np.expand_dims(img.astype('float32') / 255, axis=0)
+    folder_name = 'static'
+    file_name = 'temp.jpg'
+    save_path = os.path.join(folder_name, file_name)
+    file.save(save_path)
+
+    # Image processing
+    img = Image.open(save_path).convert('RGB').resize((128, 128))
+    img_array = img_to_array(img) / 255
+    img_array = np.expand_dims(img_array, axis=0)
     
     start = time.time()
-    pred = model.predict(img)[0]
-    # labels = (pred > 0.5).astype(int)
-    runtimes = round(time.time() - start, 4)
-    respon_model = [round(elem * 100, 2) for elem in pred]
+    pred = model.predict(img_array)[0]
+    runtime = round(time.time() - start, 4)
+    probs = [round(elem * 100, 2) for elem in pred]
 
-    return predict_result(runtimes, respon_model, 'temp.jpg')
+    return predict_result(runtime, probs, file_name)
 
 if __name__ == "__main__":
         app.run(debug=True, host='0.0.0.0', port=2000)
